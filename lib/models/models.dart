@@ -24,7 +24,7 @@ class Disease {
   final List<String> symptoms; // List of Symptom IDs
   final List<String> prevention;
   final List<String> treatment;
-  final String imageUrl;
+  final String? imageUrl;
   final String severity; // High, Medium, Low
 
   Disease({
@@ -36,7 +36,7 @@ class Disease {
     required this.symptoms,
     required this.prevention,
     required this.treatment,
-    required this.imageUrl,
+    this.imageUrl,
     required this.severity,
   });
 }
