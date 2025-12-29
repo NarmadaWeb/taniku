@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/pustaka_screen.dart';
@@ -12,19 +13,24 @@ import 'screens/calculator_screen.dart';
 import 'providers/app_provider.dart';
 import 'widgets/widgets.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+  final seenWelcome = prefs.getBool('seen_welcome') ?? false;
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AppProvider()),
       ],
-      child: const MyApp(),
+      child: MyApp(seenWelcome: seenWelcome),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool seenWelcome;
+  const MyApp({super.key, required this.seenWelcome});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +53,12 @@ class MyApp extends StatelessWidget {
           displayColor: AppColors.textMainLight,
         ),
         useMaterial3: true,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          },
+        ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -62,9 +74,15 @@ class MyApp extends StatelessWidget {
           displayColor: AppColors.textMainDark,
         ),
         useMaterial3: true,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+            TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          },
+        ),
       ),
       themeMode: appProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: const WelcomeScreen(),
+      home: seenWelcome ? const MainScaffold() : const WelcomeScreen(),
       routes: {
         '/home': (context) => const MainScaffold(),
         '/welcome': (context) => const WelcomeScreen(),

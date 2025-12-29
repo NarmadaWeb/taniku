@@ -31,6 +31,11 @@ class DataSource {
     Symptom(id: 'S009', category: 'stem', description: 'Batang berwarna kemerahan', imageUrl: null),
     Symptom(id: 'S010', category: 'stem', description: 'Ruas batang memendek', imageUrl: null),
 
+    // --- AKAR (Root) ---
+    Symptom(id: 'R001', category: 'root', description: 'Akar berwarna hitam dan berbau busuk', imageUrl: null),
+    Symptom(id: 'R002', category: 'root', description: 'Akar bengkak atau terdapat puru', imageUrl: null),
+    Symptom(id: 'R003', category: 'root', description: 'Akar tidak berkembang (pendek)', imageUrl: null),
+
     // --- BUAH/BULIR (Fruit/Grain) ---
     Symptom(id: 'F001', category: 'fruit', description: 'Bulir hampa atau kopong (Beluk)', imageUrl: 'assets/images/symptom_grain_1.jpg'),
     Symptom(id: 'F002', category: 'fruit', description: 'Bercak coklat/hitam pada gabah', imageUrl: 'assets/images/symptom_grain_2.jpg'),
@@ -233,6 +238,94 @@ class DataSource {
       treatment: [
         'Umpan beracun (rodentisida).',
         'Pengemposan lubang tikus dengan belerang.',
+      ],
+    ),
+    Disease(
+      id: 'D011',
+      name: 'Bercak Coklat',
+      scientificName: 'Helminthosporium oryzae',
+      cause: 'Jamur',
+      description: 'Menyerang daun, pelepah, dan bulir. Gejala berupa bercak coklat oval dengan titik abu-abu di tengah (seperti biji wijen). Sering terjadi pada tanah yang kekurangan hara.',
+      symptoms: ['L001', 'F002'],
+      severity: 'Sedang',
+      imageUrl: null,
+      prevention: [
+        'Pemupukan berimbang, terutama Kalium.',
+        'Perlakuan benih sebelum tanam.',
+      ],
+      treatment: [
+        'Aplikasi fungisida berbahan aktif mankozeb atau propikonazol.',
+      ],
+    ),
+    Disease(
+      id: 'D012',
+      name: 'Penyakit Bakanae',
+      scientificName: 'Gibberella fujikuroi',
+      cause: 'Jamur',
+      description: 'Tanaman tumbuh abnormal tinggi (jangkung), kurus, daun kekuningan, dan akar muncul pada ruas batang di atas tanah. Seringkali tanaman mati sebelum menghasilkan bulir.',
+      symptoms: ['S010', 'L002', 'R003'],
+      severity: 'Sedang',
+      imageUrl: null,
+      prevention: [
+        'Gunakan benih bebas patogen.',
+        'Rendam benih dalam air garam (uji bernas) dan fungisida.',
+      ],
+      treatment: [
+        'Cabut dan bakar tanaman yang terinfeksi.',
+        'Tidak ada fungisida yang efektif jika sudah terserang parah di lapangan.',
+      ],
+    ),
+    Disease(
+      id: 'D013',
+      name: 'Kerdil Rumput',
+      scientificName: 'Rice Grassy Stunt Virus',
+      cause: 'Virus',
+      description: 'Dituralarkan oleh wereng coklat. Tanaman sangat kerdil, anakan sangat banyak (seperti rumput), daun kaku dan hijau kekuningan, tidak menghasilkan malai.',
+      symptoms: ['S006', 'L002', 'L013'],
+      severity: 'Tinggi',
+      imageUrl: null,
+      prevention: [
+        'Kendalikan wereng coklat sejak dini.',
+        'Gunakan varietas tahan.',
+        'Sanitasi lingkungan.',
+      ],
+      treatment: [
+        'Cabut dan musnahkan tanaman sakit.',
+      ],
+    ),
+    Disease(
+      id: 'D014',
+      name: 'Kerdil Hampa',
+      scientificName: 'Rice Ragged Stunt Virus',
+      cause: 'Virus',
+      description: 'Juga ditularkan wereng coklat. Daun bergerigi/robek-robek, daun melintir, pembengkakan tulang daun, dan malai tidak keluar sempurna atau hampa.',
+      symptoms: ['L013', 'L010', 'F001'],
+      severity: 'Tinggi',
+      imageUrl: null,
+      prevention: [
+        'Kendalikan vektor (wereng coklat).',
+        'Eradekasi tanaman sakit.',
+      ],
+      treatment: [
+        'Tidak ada pengobatan kimiawi untuk virus.',
+      ],
+    ),
+    Disease(
+      id: 'D015',
+      name: 'Walang Sangit',
+      scientificName: 'Leptocorisa oratorius',
+      cause: 'Hama',
+      description: 'Menghisap cairan bulir padi saat masak susu. Menyebabkan bulir hampa atau berbintik hitam dan berbau busuk.',
+      symptoms: ['F001', 'F002', 'F008'],
+      severity: 'Sedang',
+      imageUrl: null,
+      prevention: [
+        'Bersihkan gulma.',
+        'Pasang umpan bangkai (kepiting/keong).',
+      ],
+      treatment: [
+        'Aplikasi insektisida kontak (BPMC) jika populasi tinggi.',
+        'Lakukan penyemprotan pagi atau sore hari saat hama aktif.',
       ],
     ),
   ];
