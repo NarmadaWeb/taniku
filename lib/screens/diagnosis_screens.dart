@@ -304,13 +304,21 @@ class DiagnosisResultScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 220,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(disease.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
+                  image: disease.imageUrl != null
+                      ? DecorationImage(
+                          image: AssetImage(disease.imageUrl!),
+                          fit: BoxFit.cover,
+                        )
+                      : null,
+                  color: disease.imageUrl == null ? AppColors.surfaceDark : null,
                 ),
                 child: Stack(
                   children: [
+                    if (disease.imageUrl == null)
+                      Center(
+                        child: Icon(Icons.image_not_supported,
+                            size: 64, color: Colors.white.withOpacity(0.3)),
+                      ),
                     Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
