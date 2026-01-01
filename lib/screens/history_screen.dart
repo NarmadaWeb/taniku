@@ -50,11 +50,19 @@ class HistoryScreen extends StatelessWidget {
                         height: 60,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            image: AssetImage(item.imageUrl),
-                            fit: BoxFit.cover,
-                          ),
+                          image: item.imageUrl != null
+                              ? DecorationImage(
+                                  image: AssetImage(item.imageUrl!),
+                                  fit: BoxFit.cover,
+                                )
+                              : null,
+                          color: item.imageUrl == null
+                              ? AppColors.primary.withOpacity(0.1)
+                              : null,
                         ),
+                        child: item.imageUrl == null
+                            ? const Icon(Icons.image_not_supported, color: AppColors.primary)
+                            : null,
                       ),
                       const SizedBox(width: 12),
                       Expanded(
