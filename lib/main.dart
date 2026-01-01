@@ -12,9 +12,16 @@ import 'screens/diagnosis_screens.dart';
 import 'screens/calculator_screen.dart';
 import 'providers/app_provider.dart';
 import 'widgets/widgets.dart';
+import 'services/notification_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Notifications
+  final notificationService = NotificationService();
+  await notificationService.init();
+  await notificationService.requestPermissions();
+
   final prefs = await SharedPreferences.getInstance();
   final seenWelcome = prefs.getBool('seen_welcome') ?? false;
 
