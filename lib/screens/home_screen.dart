@@ -222,14 +222,14 @@ class HomeScreen extends StatelessWidget {
                         Navigator.pushNamed(context, '/calculator');
                     },
                   ),
-                  _buildQuickAccessItem(
-                    context,
-                    icon: Icons.forum,
-                    label: 'Forum',
-                    color: isDark ? AppColors.surfaceDark : Colors.white,
-                    iconColor: AppColors.primary,
-                    onTap: () {},
-                  ),
+                  // _buildQuickAccessItem(
+                  //   context,
+                  //   icon: Icons.forum,
+                  //   label: 'Forum',
+                  //   color: isDark ? AppColors.surfaceDark : Colors.white,
+                  //   iconColor: AppColors.primary,
+                  //   onTap: () {},
+                  // ),
                 ],
               ),
             ],
